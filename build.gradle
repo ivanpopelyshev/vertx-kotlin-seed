@@ -1,0 +1,41 @@
+group 'kotlinx.coroutine'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.1.0-dev-5030'
+    repositories {
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-dev' }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/cy6ergn0m/maven" }
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-dev' }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'org.jetbrains.kotlinx:vertx3-lang-kotlin:0.0.+'
+    compile 'io.vertx:vertx-web:3.3.3'
+    compile 'io.vertx:vertx-mysql-postgresql-client:3.3.3'
+    compile 'io.github.microutils:kotlin-logging:1.4'
+    compile 'org.slf4j:slf4j-jdk14:1.7.21'
+}
+
+apply plugin: 'application'
+mainClassName = 'com.awesome.MainKt'
+applicationDefaultJvmArgs = ['-Dvertx.disableDnsResolver=true']
+
+run {
+    args '-conf', 'conf/bot-dev.json'
+}
+
+apply plugin: 'distribution'

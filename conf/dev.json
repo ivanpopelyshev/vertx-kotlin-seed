@@ -1,0 +1,8 @@
+{
+  "db": {
+    "username": "root",
+    "password": "mysqlrootpass",
+    "host": "localhost",
+    "database": "vertxtest"
+  }
+}
